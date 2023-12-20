@@ -1,0 +1,12 @@
+# initiate .htaccess
+RewriteEngine On
+
+# allow URL redirects with or without .php extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# remove .php extension in file for URL redirects
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,NE,L]
+
+DirectoryIndex main.php
